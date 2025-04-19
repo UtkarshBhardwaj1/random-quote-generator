@@ -1,42 +1,189 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* src/App.css */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap');
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  background: linear-gradient(135deg, #f0f8ff, #e0f7fa);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.app-container {
+  grid-template-areas:
+    "header header clock"
+    "advice famous famous"
+    "button button button";
+  grid-template-columns: 1fr 1fr auto;
+  gap: 20px;
+  padding: 30px;
+  max-width: 1000px;
+  width: 90%;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeIn 0.4s ease-out forwards;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
+@keyframes fadeIn {
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+/* Header */
+.app-header {
+  grid-area: header;
+  text-align: center;
+  color: #3f51b5;
+  margin-bottom: 15px;
+}
+
+.app-header h1 {
+  font-size: 2.4rem;
+  margin-bottom: 8px;
+  letter-spacing: -0.3px;
+}
+
+/* Quote Boxes */
+.advice-section, .famous-section {
+  min-height: 200px;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+}
+
+.advice-section {
+  grid-area: advice;
+  background-color: #e3f2fd;
+  box-shadow: 0 6px 15px rgba(33, 150, 243, 0.1);
+  animation: slideInLeft 0.4s ease-out 0.2s forwards;
+}
+
+.famous-section {
+  grid-area: famous;
+  background-color: #fffde7;
+  box-shadow: 0 6px 15px rgba(255, 235, 59, 0.1);
+  animation: slideInRight 0.4s ease-out 0.4s forwards;
+}
+
+@keyframes slideInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
-.card {
-  padding: 2em;
+@keyframes slideInRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-.read-the-docs {
-  color: #888;
+.advice-section:hover, .famous-section:hover {
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+/* Quote Text */
+.advice-section blockquote,
+.famous-section blockquote {
+  font-size: 1.5rem;
+  font-style: italic;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+/* Author */
+.advice-section cite,
+.famous-section cite {
+  display: block;
+  font-size: 1rem;
+  font-weight: bold;
+  opacity: 0.8;
+}
+
+/* Button */
+.button-wrapper {
+  grid-area: button;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.button-wrapper button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  background-color: #673ab7;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease-in-out;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+  animation: pulseButton 2s infinite alternate;
+}
+
+@keyframes pulseButton {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.02);
+  }
+}
+
+.button-wrapper button:hover {
+  background-color: #512da8;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+  transform: scale(1.03);
+}
+
+/* Clock */
+.digital-clock {
+  grid-area: clock;
+  justify-self: end;
+  align-self: center;
+  font-size: 1.2rem;
+  color: #777;
+  padding-right: 8px;
+  opacity: 0;
+  transform: translateX(10px);
+  animation: slideInClock 0.4s ease-out 0.6s forwards;
+}
+
+@keyframes slideInClock {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Loader / Error */
+.loading, .error {
+  text-align: center;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  font-size: 0.9rem;
+}
+
+.loading {
+  color: #1976d2;
+}
+
+.error {
+  color: #d32f2f;
 }

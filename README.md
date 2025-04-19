@@ -1,54 +1,20 @@
-# React + TypeScript + Vite
+# Inspire Me - Quote and Advice Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Inspire Me is a React-based web application that generates daily advice and famous quotes for users. This app provides a fresh dose of motivation and wisdom every time you visit, with an easy-to-use interface featuring a digital clock and a button to generate new quotes and advice.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Daily Advice**: Fetches daily advice from an external API (`https://api.adviceslip.com/advice`).
+- **Famous Quotes**: Displays a random famous quote from a pre-defined list of inspirational figures.
+- **Digital Clock**: Displays the current time in a 24-hour format.
+- **User Interaction**: Includes a "New Inspiration" button to fetch new quotes and advice on demand.
+- **Responsive Design**: The layout adapts to different screen sizes, providing an optimal viewing experience on both desktop and mobile devices.
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React**: For building the user interface and handling state management.
+- **TypeScript**: For static typing and improved code quality.
+- **CSS**: Custom styles to create a visually appealing and modern UI.
+- **Fetch API**: To get daily advice from an external API.
+- **JSX**: For structuring the UI elements in a declarative way.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
